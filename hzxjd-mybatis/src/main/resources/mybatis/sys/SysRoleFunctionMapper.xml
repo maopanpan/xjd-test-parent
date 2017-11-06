@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.sys.dao.SysRoleFunctionMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.sys.entity.SysRoleFunction">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="function_id" jdbcType="INTEGER" property="functionId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="delete_flg" jdbcType="INTEGER" property="deleteFlg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+  </resultMap>
+
+  <!-- 根据角色编号取得权限ID -->
+  <select id="selectFunctionByRoleId" resultType="java.lang.Integer">
+  	SELECT
+  		function_id
+  	FROM
+  		sysr_role_function
+  	WHERE
+  		role_id = #{roleId}
+  	AND delete_flg = '0'	<!-- 未删除-->
+  </select>
+
+
+</mapper>

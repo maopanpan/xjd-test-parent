@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-4.3.xsd
+						http://www.springframework.org/schema/mvc
+						http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+    <!-- 加载配置属性文件 -->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:hzxjd.properties"/>
+    <!-- 使Spring关注Annotation -->
+    <context:annotation-config/>
+    <!-- 自动扫描且只扫描@Controller -->
+    <!-- base-package 如果多个，用“,”分隔 -->
+    <context:component-scan base-package="com.hz.xjd"></context:component-scan>
+    <!-- 默认的注解映射的支持 -->
+    <mvc:annotation-driven/>
+    <!-- 对静态资源文件的访问， 将无法mapping到Controller的path交给default servlet handler处理 -->
+    <!-- 不对静态资源如CSS、JS、HTML等进行拦截 -->
+    <mvc:default-servlet-handler/>
+    <!-- 注解方法处理 -->
+    <!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->
+    <!-- 定义视图文件解析 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="${web.view.prefix}"/>
+        <property name="suffix" value="${web.view.suffix}"/>
+    </bean>
+    <!-- 处理JSON请求 -->
+    <bean class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <!-- 支持后缀匹配 -->
+        <property name="favorPathExtension" value="true"/>
+        <!-- 支持参数匹配 -->
+        <property name="favorParameter" value="true"/>
+        <!-- 默认为fasle，表示accept-header匹配 -->
+        <property name="ignoreAcceptHeader" value="true"/>
+        <!-- 开启默认匹配 -->
+        <property name="defaultContentType" value="text/html"/>
+        <property name="mediaTypes">
+            <map>
+                <!-- 告诉视图解析器，返回的类型为json格式 -->
+                <entry key="json" value="application/json"/>
+                <entry key="xml" value="application/xml"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="mappingJacksonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <!--拦截器定义-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.hz.xjd.app.aspect.LimitAspect"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!-- 开启Shiro注解的Spring配置方式的beans。在lifecycleBeanPostProcessor之后运行 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+</beans>

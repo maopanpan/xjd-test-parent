@@ -1,0 +1,1 @@
+INSERT INTO `t_sys_propertys` (`id`, `type`, `key`, `value`, `display_sort`, `descr`, `delete_flg`, `create_time`, `creator`, `modify_time`, `modifier`) VALUES ('1', 'constant_settings', 'error_detail', 'true', '1', '是否显示错误详情', '0', '2017-10-23 17:17:02', '1', '2017-10-23 17:17:02', '1');

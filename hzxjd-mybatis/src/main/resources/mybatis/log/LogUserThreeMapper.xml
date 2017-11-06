@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.log.dao.LogUserThreeMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.log.entity.LogUserThree">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="three_type" jdbcType="VARCHAR" property="threeType" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="status" jdbcType="CHAR" property="status" />
+  </resultMap>
+</mapper>

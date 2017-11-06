@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.user.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.user.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="account_fy" jdbcType="VARCHAR" property="accountFy" />
+    <result column="account_trust" jdbcType="VARCHAR" property="accountTrust" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="reffer" jdbcType="VARCHAR" property="reffer" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="idtype" jdbcType="CHAR" property="idtype" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="source_from" jdbcType="CHAR" property="sourceFrom" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="register_type" jdbcType="CHAR" property="registerType" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+    <result column="is_enable" jdbcType="CHAR" property="isEnable" />
+    <result column="is_blacklist" jdbcType="CHAR" property="isBlacklist" />
+    <result column="is_locked" jdbcType="CHAR" property="isLocked" />
+    <result column="is_employee" jdbcType="CHAR" property="isEmployee" />
+  </resultMap>
+
+  <!--通过手机号，查询登录账号-->
+  <select id="selectUserByMobile" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    SELECT
+    *
+    FROM
+    user_mobile
+    WHERE
+    mobile = #{mobile}
+    AND delete_flg = 0
+  </select>
+
+  <!-- 通过用户ID，更新最后登录时间-->
+  <update id="updateLastLoginTime" parameterType="java.util.HashMap">
+    UPDATE user_mobile
+    SET last_logintime = NOW()
+    WHERE
+    id = #{id}
+  </update>
+</mapper>

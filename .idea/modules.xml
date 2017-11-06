@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-web/hzxjd-app/hzxjd-app.iml" filepath="$PROJECT_DIR$/hzxjd-web/hzxjd-app/hzxjd-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-services/hzxjd-biz-service/hzxjd-biz-service.iml" filepath="$PROJECT_DIR$/hzxjd-services/hzxjd-biz-service/hzxjd-biz-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-common/hzxjd-common.iml" filepath="$PROJECT_DIR$/hzxjd-common/hzxjd-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-web/hzxjd-console/hzxjd-console.iml" filepath="$PROJECT_DIR$/hzxjd-web/hzxjd-console/hzxjd-console.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-model/hzxjd-model.iml" filepath="$PROJECT_DIR$/hzxjd-model/hzxjd-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-mybatis/hzxjd-mybatis.iml" filepath="$PROJECT_DIR$/hzxjd-mybatis/hzxjd-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-parent.iml" filepath="$PROJECT_DIR$/hzxjd-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-redis/hzxjd-redis.iml" filepath="$PROJECT_DIR$/hzxjd-redis/hzxjd-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-services/hzxjd-services.iml" filepath="$PROJECT_DIR$/hzxjd-services/hzxjd-services.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hzxjd-web/hzxjd-web.iml" filepath="$PROJECT_DIR$/hzxjd-web/hzxjd-web.iml" />
+    </modules>
+  </component>
+</project>

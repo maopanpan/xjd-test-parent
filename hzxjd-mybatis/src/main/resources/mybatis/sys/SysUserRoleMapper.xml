@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.sys.dao.SysUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.sys.entity.SysUserRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="delete_flg" jdbcType="INTEGER" property="deleteFlg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+  </resultMap>
+  <!-- 根据系统用户编号取得角色ID -->
+  <select id="selectRoleBySysUserId" resultType="java.lang.Integer">
+  	SELECT
+  		role_id
+  	FROM
+  		sys_user_role
+  	WHERE
+  		sys_user_id = #{sysUserId}
+  	AND delete_flg = '0'	<!-- 未删除-->
+  </select>
+</mapper>

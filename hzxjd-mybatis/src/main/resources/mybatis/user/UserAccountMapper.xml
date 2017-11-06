@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.user.dao.UserAccountMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.user.entity.UserAccount">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="total" jdbcType="DECIMAL" property="total" />
+    <result column="available" jdbcType="DECIMAL" property="available" />
+    <result column="locked" jdbcType="DECIMAL" property="locked" />
+    <result column="lastupdate" jdbcType="TIMESTAMP" property="lastupdate" />
+  </resultMap>
+</mapper>

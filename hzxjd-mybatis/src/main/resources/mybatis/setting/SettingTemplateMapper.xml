@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.setting.dao.SettingTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.setting.entity.SettingTemplate">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="template_no" jdbcType="VARCHAR" property="templateNo" />
+    <result column="template_name" jdbcType="VARCHAR" property="templateName" />
+    <result column="template_ver" jdbcType="VARCHAR" property="templateVer" />
+    <result column="template_style" jdbcType="VARCHAR" property="templateStyle" />
+    <result column="template_type" jdbcType="CHAR" property="templateType" />
+    <result column="template_scope" jdbcType="VARCHAR" property="templateScope" />
+    <result column="template_status" jdbcType="VARCHAR" property="templateStatus" />
+    <result column="template_sort" jdbcType="INTEGER" property="templateSort" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="delete_flg" jdbcType="INTEGER" property="deleteFlg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  
+  <select id="selectSettingByTemplateNo" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    SELECT
+        *
+    FROM
+        setting_template st
+    WHERE
+        st.delete_flg = 0
+    <if test="templateNo != null">
+        AND st.template_no = #{templateNo}
+    </if>
+    <if test="templateType != null">
+        AND st.template_type = #{templateType}
+    </if>
+      LIMIT 1
+  </select>
+</mapper>

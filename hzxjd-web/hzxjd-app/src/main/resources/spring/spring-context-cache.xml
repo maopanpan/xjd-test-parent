@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+                        http://www.springframework.org/schema/cache
+                        http://www.springframework.org/schema/cache/spring-cache-4.3.xsd">
+	<!-- 加载配置属性文件 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle"  value="${redis.maxIdle}" /> <!-- 最大能够保持idel状态的对象数  -->
+		<property name="maxTotal" value="${redis.maxTotal}" /> <!-- 最大分配的对象数 -->
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" /> <!-- 当调用borrow Object方法时，是否进行有效性检查 -->
+	</bean>
+
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg index="0" ref="jedisPoolConfig" />
+		<constructor-arg index="1" value="${redis.host}" />
+		<constructor-arg index="2" value="${redis.port}" type="int" />
+ 		<constructor-arg index="3" value="${redis.timeout}" type="int"/>
+		<!-- <constructor-arg index="4" value="${redis.password}" />  -->
+	</bean>
+
+	<!-- 使用缓存annotation 配置 -->
+	<cache:annotation-driven cache-manager="ehCacheManager" proxy-target-class="true" />
+	<!-- cacheManager工厂类 -->
+	<bean id="ehCacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+		  p:configLocation="classpath:${ehcache.configFile}" p:shared="true" />
+    <!-- spring对ehcache的缓存管理 -->
+    <bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		  p:cacheManager-ref="ehCacheManagerFactory" />
+	<!-- 登录缓存 -->
+	<bean id="loginCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheName" value="login-Cache"/>
+		<property name="cacheManager" ref="ehCacheManagerFactory"/>
+	</bean>
+
+</beans>

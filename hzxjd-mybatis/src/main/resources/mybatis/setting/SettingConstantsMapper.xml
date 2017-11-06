@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.setting.dao.SettingConstantsMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.setting.entity.SettingConstants">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="lastupdate" jdbcType="TIMESTAMP" property="lastupdate" />
+  </resultMap>
+</mapper>

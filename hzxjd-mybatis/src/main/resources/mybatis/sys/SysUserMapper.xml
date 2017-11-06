@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.sys.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.sys.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sys_user_id" jdbcType="INTEGER" property="sysUserId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="user_status" jdbcType="CHAR" property="userStatus" />
+    <result column="is_sys" jdbcType="INTEGER" property="isSys" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="mail" jdbcType="VARCHAR" property="mail" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="employee_id" jdbcType="INTEGER" property="employeeId" />
+    <result column="user_type" jdbcType="CHAR" property="userType" />
+    <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin" />
+    <result column="delete_flg" jdbcType="INTEGER" property="deleteFlg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+  </resultMap>
+
+  <!-- 根据登录用户名称取得用户信息 -->
+  <select id="selectUserByLoginName" resultMap="BaseResultMap">
+  	SELECT
+  		*
+  	FROM
+  		sys_user
+  	WHERE
+  		login_name = #{loginName}
+  	AND delete_flg = '0'	<!-- 未删除-->
+  	AND user_status = 'enable' <!-- 用户状态为可用 -->
+  </select>
+</mapper>

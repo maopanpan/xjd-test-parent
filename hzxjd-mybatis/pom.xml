@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.hz</groupId>
+    <artifactId>hzxjd-parent</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>hzxjd-mybatis</artifactId>
+  <name>hzxjd-mybatis</name>
+
+  <dependencies>
+    <dependency>
+    	<groupId>${parent.groupId}</groupId>
+    	<artifactId>hzxjd-common</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>${parent.groupId}</groupId>
+    	<artifactId>hzxjd-model</artifactId>
+    	<version>${parent.version}</version>
+    </dependency>
+    <!--通用Mapper -->
+    <dependency>
+        <groupId>tk.mybatis</groupId>
+        <artifactId>mapper</artifactId>
+    </dependency>
+    <!--MyBatis的核心包-->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+    </dependency>
+    <!-- 分页 -->
+    <dependency>
+       <groupId>com.github.pagehelper</groupId>
+       <artifactId>pagehelper</artifactId>
+    </dependency>
+  </dependencies>
+</project>

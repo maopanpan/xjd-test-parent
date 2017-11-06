@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.hz</groupId>
+    <artifactId>hzxjd-web</artifactId>
+    <version>1.0.0</version>
+  </parent>
+  <artifactId>hzxjd-console</artifactId>
+  <packaging>war</packaging>
+  <name>hzxjd-console</name>
+
+  <dependencies>
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>opensymphony</groupId>
+        <artifactId>sitemesh</artifactId>
+    </dependency>
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-cas</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>com.google.guava</groupId>
+		<artifactId>guava</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-validator</artifactId>
+	</dependency>
+	<!-- json -->
+	<!-- 使用Gson将bean转换json确保数据的正确，使用FastJson将Json转换Bean  -->
+	<dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>gson</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
+	</dependency>
+  </dependencies>
+
+  <build>
+  	<finalName>console</finalName>
+  	<resources>
+  		<resource>
+  			<directory>src/main/resources</directory>
+  			<filtering>false</filtering>
+  			<!-- 默认打包排除env文件夹 -->
+  			<excludes>
+  				<exclude>env/**/*</exclude>
+  			</excludes>
+  		</resource>
+  		<!-- 根据参数打包配置文件 -->
+  		<resource>
+  			<directory>src/main/resources/env/${profiles.active}</directory>
+  			<filtering>true</filtering>
+  		</resource>
+  	</resources>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  		</plugin>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-war-plugin</artifactId>
+  			<configuration>
+  				<warName>console</warName>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>

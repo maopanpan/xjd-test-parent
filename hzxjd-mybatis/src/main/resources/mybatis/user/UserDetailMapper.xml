@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hz.xjd.mybatis.user.dao.UserDetailMapper">
+  <resultMap id="BaseResultMap" type="com.hz.xjd.model.user.entity.UserDetail">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="family" jdbcType="VARCHAR" property="family" />
+    <result column="home_region" jdbcType="INTEGER" property="homeRegion" />
+    <result column="home_address" jdbcType="VARCHAR" property="homeAddress" />
+    <result column="live_time" jdbcType="VARCHAR" property="liveTime" />
+    <result column="home_telephone" jdbcType="VARCHAR" property="homeTelephone" />
+    <result column="education" jdbcType="CHAR" property="education" />
+    <result column="married" jdbcType="CHAR" property="married" />
+    <result column="parenting_status" jdbcType="VARCHAR" property="parentingStatus" />
+    <result column="children_number" jdbcType="VARCHAR" property="childrenNumber" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_region" jdbcType="INTEGER" property="companyRegion" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="company_telephone" jdbcType="VARCHAR" property="companyTelephone" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="salary" jdbcType="VARCHAR" property="salary" />
+    <result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl" />
+    <result column="origin_region" jdbcType="INTEGER" property="originRegion" />
+    <result column="origin_address" jdbcType="VARCHAR" property="originAddress" />
+    <result column="first_contact_name" jdbcType="VARCHAR" property="firstContactName" />
+    <result column="first_contact_relation" jdbcType="VARCHAR" property="firstContactRelation" />
+    <result column="first_contact_mobile" jdbcType="VARCHAR" property="firstContactMobile" />
+    <result column="second_contact_name" jdbcType="VARCHAR" property="secondContactName" />
+    <result column="second_contact_relation" jdbcType="VARCHAR" property="secondContactRelation" />
+    <result column="second_contact_mobile" jdbcType="VARCHAR" property="secondContactMobile" />
+  </resultMap>
+</mapper>

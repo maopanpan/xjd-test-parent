@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+   <!-- 读取配置文件 -->
+   <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="locations">
+         <list>
+            <!-- 这里支持多种寻址方式：classpath和file -->
+            <value>classpath:hzxjd.properties</value>
+            <value>classpath:jdbc.properties</value>
+            <value>classpath:redis.properties</value>
+         </list>
+      </property>
+   </bean>
+    <!-- import -->
+    <import resource="spring/spring-context-base.xml"/>
+    <import resource="spring/spring-context-db.xml"/>
+    <import resource="spring/spring-context-mybatis.xml"/>
+    <import resource="spring/spring-context-cache.xml"/>
+    <import resource="spring/spring-context-shiro.xml"/>
+</beans>
